@@ -1,0 +1,736 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main id="main-doc">
+    <a id="skip-link" href="#navbar">menu</a>
+    <nav id="navbar">
+      <header>Web Performance</header>
+      <a class="nav-link" href="#Introduction">Introduction</a>
+      <br />
+      <a class="nav-link" href="#Measuring_Performance">Measuring Performance</a>
+      <br />
+      <a class="nav-link" href="#JavaScript_Performance_Optimization">JavaScript Performance Optimization</a>
+      <br />
+      <a class="nav-link" href="#HTML_Performance_Optimization">HTML Performance Optimization</a>
+      <br />
+      <a class="nav-link" href="#CSS_Performance_Optimization">CSS Performance Optimization</a>
+      <br />
+      <a class="nav-link" href="#References">References</a>
+    </nav>
+    
+    <section class="main-section" id="Introduction">
+      <header id="header-1">Introduction</header>
+      <p>
+        Building websites requires HTML, CSS, and JavaScript. To build websites and applications people want to use,
+        which attract and retain users, you need to create a good user experience. Part of good user experience is
+        ensuring the content is quick to load and responsive to user interaction. This is known as web performance,
+        and in this module you'll focus on the fundamentals of how to create performant websites.
+        <br /><br />
+        The rest of our beginner's learning material tried to stick to web best practices such as performance and
+        accessibility as much as possible, however, it is good to focus specifically on such topics too, and make
+        sure you are familiar with them.
+      </p>
+      <h1>Learning pathway</h1>
+      <p>
+        While knowing HTML, CSS, and JavaScript is needed for implementing many web performance improvement
+        recommendations, knowing how to build applications is not a necessary pre-condition for understanding and
+        measuring web performance. We do however recommend that before you work through this module, you at least get
+        a basic idea of web development by working through our
+        <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web">Getting started with the
+          web module</a>.
+        <br /><br />
+        It would also be helpful to go a bit deeper into these topics, with modules such as:
+      </p>
+      <ul>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML">
+            Introduction to HTML
+          </a>
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps">
+            CSS first steps
+          </a>
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps">
+            JavaScript first steps
+          </a>
+        </li>
+      </ul>
+      <p>
+        Once you've worked through this module, you'll probably be excited to go deeper into web performance — you can
+        find a lot of further teachings in our main MDN Web performance section, including overviews of performance
+        APIs, testing and analysis tools, and performance bottleneck gotchas.
+      </p>
+      <h1>Guides</h1>
+      <p>
+        This topic contains the following guides. The following is a suggested order for working through them; you
+        should definitely start with the first one.
+        <br /><br />
+        <a href="https://developer.mozilla.org/en-US/docs/Learn/Performance/why_web_performance">The "why" of web
+          performance</a>
+      </p>
+      <p class="block-indent">
+        This article discusses why web performance is important for accessibility, user experience and your business
+        goals.
+      </p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Learn/Performance/What_is_web_performance">What is web
+          performance?</a></p>
+      <p class="block-indent">
+        You know web performance is important, but what constitutes web performance? This article introduces the
+        components of performance, from web page loading and rendering, including how your content makes it into your
+        users' browser to be viewed, to what groups of people we need to consider when thinking about performance.
+      </p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Learn/Performance/Perceived_performance">How do users
+          perceive performance?</a></p>
+      <p class="block-indent">
+        More important than how fast your website is in milliseconds, is how fast your users perceive your site to be.
+        These perceptions are impacted by actual page load time, idling, responsiveness to user interaction, and the
+        smoothness of scrolling and other animations. In this article, we discuss the various loading metrics,
+        animation, and responsiveness metrics, along with best practices to improve user perception, if not the actual
+        timings.
+      </p>
+      <p><a href="#Measuring_Performance">Measuring performance</a></p>
+      <p class="block-indent">
+        Now that you understand a few performance metrics, we take a deeper dive into performance tools, metrics, and
+        APIs and how we can make performance part of the web development workflow.
+      </p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Learn/Performance/Multimedia">Multimedia: images</a></p>
+      <p class="block-indent">
+        The lowest hanging fruit of web performance is often media optimization. Serving different media files based on
+        each user agent's capability, size, and pixel density is possible. In this article we discuss the impact images
+        have on performance, and the methods to reduce the number of bytes sent per image.
+      </p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Learn/Performance/video">Multimedia: video</a></p>
+      <p class="block-indent">
+        The lowest hanging fruit of web performance is often media optimization. In this article we discuss the impact
+        video content has on performance, and cover tips like removing audio tracks from background videos can improve
+        performance.
+      </p>
+      <p><a href="#JavaScript_Performance_Optimization">JavaScript performance optimization</a></p>
+      <p class="block-indent">
+        JavaScript, when used properly, can allow for interactive and immersive web experiences — or it can
+        significantly harm download time, render time, in-app performance, battery life, and user experience. This
+        article outlines some JavaScript best practices that should be considered to ensure even complex content is as
+        performant as possible.
+      </p>
+      <p><a href="#HTML_Performance_Optimization">HTML performance optimization</a></p>
+      <p class="block-indent">
+        Some attributes and the source order of your markup can impact the performance or your website. By minimizing
+        the number of DOM nodes, making sure the best order and attributes are used for including content such as
+        styles, scripts, media, and third-party scripts, you can drastically improve the user experience. This article
+        looks in detail at how HTML can be used to ensure maximum performance.
+      </p>
+      <p><a href="#CSS_Performance_Optimization">CSS performance optimization</a></p>
+      <p class="block-indent">
+        CSS may be a less important optimization focus for improved performance, but there are some CSS features that
+        impact performance more than others. In this article we look at some CSS properties that impact performance and
+        suggested ways of handling styles to ensure performance is not negatively impacted.
+      </p>
+      <p><a class="wavy-red" href="https://developer.mozilla.org/en-US/docs/Learn/Performance/Fonts">Fonts and
+          performance</a></p>
+      <p class="block-indent">
+        A look at whether you need to include external fonts and, if you do, how to include the fonts your design
+        requires with the least impact on your sites performance.
+      </p>
+      <p><a class="wavy-red" href="https://developer.mozilla.org/en-US/docs/Learn/Performance/Mobile">Mobile
+          performance</a></p>
+      <p class="block-indent">
+        With web access on mobile devices being so popular, and all mobile platforms having fully-fledged web browsers,
+        but possibly limited bandwidth, CPU and battery life, it is important to consider the performance of your web
+        content on these platforms. This article looks at mobile-specific performance considerations.
+      </p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Learn/Performance/business_case_for_performance">The business
+          case for web performance</a></p>
+      <p class="block-indent">
+        There are many things a developer can do to improve performance, but how fast is fast enough? How can you
+        convince powers that be of the importance of these efforts? Once optimized, how can you ensure bloat doesn't
+        come back? In this article we look at convincing management, developing a performance culture and performance
+        budget, and introduce ways to ensure regressions don't sneak into your code base.
+      </p>
+    </section>
+
+    <section class="main-section" id="Measuring_Performance">
+      <header id="header-2">Measuring Performance</header>
+      <p>
+        Measuring performance provides an important metric to help you assess the success of your app, site, or web
+        service.
+        <br /><br />
+        For example, you can use performance metrics to determine how your app performs in comparison to a competitor,
+        or you can compare your app's performance across releases. The metrics you choose to measure should be relevant
+        to your users, site, and business goals. They should be collected, measured consistently, and analyzed in a
+        format that can be consumed and understood by non-technical stakeholders.
+        <br /><br />
+        This article introduces tools you can use to access web performance metrics, which can be used to measure and
+        optimize your site's performance.
+      <table>
+        <tr>
+          <th>Prerequisites</th>
+          <td>Basic computer literacy, <a
+              href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software">basic
+              software installed</a>, and basic knowledge of <a
+              href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web">client-side web
+              technologies</a>.</td>
+        </tr>
+        <tr>
+          <th>Objective</th>
+          <td>To provide information about web performance metrics that you can collect through various web performance
+            APIs and tools that you can use to visualize that data.</td>
+        </tr>
+      </table>
+      </p>
+      <h1>Performance tools</h1>
+      <p>
+        There are several different tools available to help you measure and improve performance. These can generally be
+        classified into two categories:
+      </p>
+      <ul>
+        <li>Tools that indicate or measure performance, such as <a href="https://pagespeed.web.dev/">PageSpeed
+            Insights</a> or the Firefox <a
+            href="https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/index.html">Network Monitor</a>
+          and <a href="https://firefox-source-docs.mozilla.org/devtools-user/performance/index.html">Performance
+            Monitor</a>. These tools show you how fast or slow your website is loading. They also indicate areas that
+          can be improved to optimize your web app.</li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance_API">Performance APIs</a> that you can
+          use to build custom performance tools.</li>
+      </ul>
+      <h1>General performance reporting tools</h1>
+      <p>Tools like <a href="https://pagespeed.web.dev/">PageSpeed Insights</a> can provide quick performance
+        measurements. You can enter a URL and get a performance report in seconds. The report contains scores to
+        indicate how your website is performing, both for mobile and desktop. This is a good start for getting an idea
+        about what you are already doing well and what could be improved.
+
+        At the time of writing, MDN's performance report summary looks similar to the following:</p>
+      <img
+        src="https://developer.mozilla.org/en-US/docs/Learn/Performance/Measuring_performance/pagespeed-insight-mozilla-homepage.png"></img>
+      <p>
+        A performance report contains information about things like how long a user has to wait before anything is
+        displayed on the page, how many bytes need to be downloaded to display a page, and much more. It also lets you
+        know if the measured values are considered good or bad.
+        <br /><br />
+
+        webpagetest.org is another example of a tool that automatically tests your site and returns useful metrics.
+        <br /><br />
+        Try running your favorite website through these tools and see what the scores are.
+      </p>
+      <h1>Network monitor tools</h1>
+      <p>Modern browsers have tools available that you can use to run against loaded pages and determine how they are
+        performing; most of them work similarly. For example, the Firefox Network Monitor returns detailed information
+        on all the assets downloaded from the network, along with a waterfall time graph that shows how long each one
+        took to download.</p>
+      <img
+        src="https://developer.mozilla.org/en-US/docs/Learn/Performance/Measuring_performance/network-monitor.png"></img>
+      <p>You should also check out <a href="https://developer.chrome.com/docs/devtools/network/">Chrome's Network
+          Monitor documentation</a>.</p>
+      <h1>Performance monitor tools</h1>
+      <p>You can also use browser performance tools such as the <a
+          href="https://firefox-source-docs.mozilla.org/devtools-user/performance/index.html">Firefox Performance
+          Monitor</a> to measure the performance of a web app or site's user interface as you perform different actions.
+        This indicates the features that might be slowing down your web app or site.</p>
+      <img
+        src="https://developer.mozilla.org/en-US/docs/Learn/Performance/Measuring_performance/perf-monitor.png"></img>
+      <p>See also <a href="https://developer.chrome.com/docs/devtools/performance/">Chrome's Performance tool
+          documentation</a>.</p>
+      <h1>Performance APIs</h1>
+      <p>
+        When writing code for the Web, there are a large number of <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API">Web APIs</a> available that allow you to create your
+        own performance-measuring tools.
+        <br />
+        <br />
+        You can use the <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Navigation_timing">Navigation Timing
+          API</a> to measure client-side web performance; including the amount of time needed to unload the previous
+        page, how long domain lookups take, the total time spent executing the window's load handler, and more. You can
+        use the API for metrics related to all the navigation events displayed in the diagram below.
+      </p>
+      <img
+        src="https://developer.mozilla.org/en-US/docs/Learn/Performance/Measuring_performance/navigationtimingapi.jpg"></img>
+      <p>
+        The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance_API">Performance API</a>, which
+        provides access to performance-related information for the current page, includes the <a class="wavy-red"
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Performance_Timeline">Performance Timeline API</a>, the
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Navigation_timing">Navigation Timing
+          API</a>, the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/User_timing">User
+          Timing API</a>, and the <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Resource_timing">Resource Timing
+          API</a>. These interfaces allow the accurate measurement of the time it takes for JavaScript tasks to
+        complete.<br /><br />
+
+        The <a href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry">PerformanceEntry</a> object is
+        part of the <i>performance timeline</i>. A <i>performance entry</i> can be directly created by making a
+        performance <a href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMark"><i>mark</i></a> or <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMeasure"><i>measure</i></a> (for example by
+        calling the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark"><i>mark()</i></a>
+        method) at an explicit point in an application. Performance entries are also created in indirect ways, such as
+        loading a resource like an image.<br /><br />
+
+        The <a href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver">PerformanceObserver API</a>
+        can be used to observe performance measurement events and to notify you of new <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry">performance entries</a> as they are
+        recorded in the browser's performance timeline.<br /><br />
+
+        While this article does not dive into using these APIs, it is useful to know they exist. You can also refer to
+        the <a
+          href="https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings">Navigation and
+          timings</a> article for further examples of using performance Web APIs.
+      </p>
+      <h1>Conclusion</h1>
+      <p>This article provided a brief overview of some of the tools that can help you measure performance on a web app
+        or site. In the next article, we'll see how you can optimize images on your site to improve its performance.</p>
+    </section>
+
+    <section class="main-section" id="JavaScript_Performance_Optimization">
+      <header id="header-3">JavaScript Performance Optimization</header>
+      <p>
+        It is very important to consider how you are using JavaScript on your websites and think about how to mitigate
+        any performance issues that it might be causing. While images and video account for over 70% of the bytes
+        downloaded for the average website, byte per byte, JavaScript has a greater potential for negative performance
+        impact — it can significantly impact download times, rendering performance, and CPU and battery usage. This
+        article introduces tips and techniques for optimizing JavaScript to enhance the performance of your website.
+      </p>
+      <table>
+        <tr>
+          <th>Prerequisites</th>
+          <td>Basic computer literacy, <a
+              href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software">basic
+              software installed</a>, and basic knowledge of <a
+              href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web">client-side web
+              technologies</a>.</td>
+        </tr>
+        <tr>
+          <th>Objective</th>
+          <td>To learn about the effects of JavaScript on web performance and how to mitigate or fix related issues.
+          </td>
+        </tr>
+      </table>
+      <h1>To optimize or not to optimize</h1>
+      <p>
+        The first question you should answer before starting to optimize your code is "what do I need to optimize?".
+        Some of the tips and techniques discussed below are good practices that will benefit just about any web project,
+        whereas some are only needed in certain situations. Trying to apply all these techniques everywhere is probably
+        unnecessary, and may be a waste of your time. You should figure out what performance optimizations are actually
+        needed in each project.<br /><br />
+
+        To do this, you need to <a
+          href="https://developer.mozilla.org/en-US/docs/Learn/Performance/Measuring_performance">measure the
+          performance</a> of your site. As the previous link shows, there are several different ways to measure
+        performance, some involving sophisticated <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Performance_API">performance APIs</a>. The best way to
+        get started however, is to learn how to use tools such as built-in browser <a
+          href="https://developer.mozilla.org/en-US/docs/Learn/Performance/Measuring_performance#network_monitor_tools">network</a>
+        and <a
+          href="https://developer.mozilla.org/en-US/docs/Learn/Performance/Measuring_performance#performance_monitor_tools">performance</a>
+        tools, to see what parts of the page load are taking a long time and need optimizing.
+      </p>
+      <h1>Optimizing JavaScript downloads</h1>
+      <p>The most performant, least blocking JavaScript you can use is JavaScript that you don't use at all. You should
+        use as little JavaScript as possible. Some tips to bear in mind:</p>
+      <ul>
+        <li>
+          <strong>You don't always need a framework</strong>: You might be familiar with using a <a
+            href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks">JavaScript
+            framework</a>. If you are experienced and confident with using this framework, and like all of the tooling
+          it provides, then it might be your go-to tool for building most projects. However, frameworks are
+          JavaScript-heavy. If you are creating a fairly static experience with few JavaScript requirements, you
+          probably don't need that framework. You might be able to implement what you need using a few lines of standard
+          JavaScript.
+        </li>
+        <li>
+          <strong>Consider a simpler solution</strong>: You might have a flashy, interesting solution to implement, but
+          consider whether your users will appreciate it. Would they prefer something simpler?
+        </li>
+        <li>
+          <strong>Remove unused code</strong>: This may sound obvious, but it is surprising how many developers forget
+          to clean up unused functionality that was added during the development process. You need to be careful and
+          deliberate about what is added and removed. All script gets parsed, whether it is used or not; therefore, a
+          quick win to speed up downloads would be to get rid of any functionality not being used. Consider also that
+          often you will only use a small amount of the functionality available in a framework. Is it possible to create
+          a custom build of the framework that only contains the part that you need?
+        </li>
+        <li>
+          <strong>Consider built-in browser features</strong>: It might be that you can use a feature the browser
+          already has, rather than creating your own via JavaScript. For example:
+          <ul>
+            <li>Use <a
+                href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#using_built-in_form_validation">built-in
+                client-side form validation</a>.</li>
+            <li>Use the browser's own <a
+                href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video">&ltvideo&gt</a> player.</li>
+            <li>Use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations">CSS
+                animations</a> instead of a JavaScript animation library (see also <a
+                href="https://developer.mozilla.org/en-US/docs/Learn/Performance/JavaScript#handling_animations">Handling
+                animations</a>).</li>
+          </ul>
+        </li>
+      </ul>
+      <p>
+        You should also split your JavaScript into multiple files representing critical and non-critical parts. <a
+          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">JavaScript modules</a> allow you
+        to do this more efficiently than just using separate external JavaScript files.<br /><br />
+
+        Then you can optimize these smaller files. <a
+          href="https://developer.mozilla.org/en-US/docs/Glossary/Minification">Minification</a> reduces the number of
+        characters in your file, thereby reducing the number of bytes or weight of your JavaScript. <a
+          href="https://developer.mozilla.org/en-US/docs/Glossary/GZip_compression">Gzipping</a> compresses the file
+        further and should be used even if you don't minify your code. <a
+          href="https://developer.mozilla.org/en-US/docs/Glossary/Brotli_compression">Brotli</a> is similar to Gzip, but
+        generally outperforms Gzip compression.<br /><br />
+
+        You can split and optimize your code manually, but often a module bundler like <a
+          href="https://webpack.js.org/">Webpack</a> will do a better job of this.
+      </p>
+      <h1>Handling parsing and execution</h1>
+      <p>
+        Before looking at the tips contained in this section, it is important to talk about where in the process of
+        browser page rendering JavaScript is handled. When a web page is loaded:
+      </p>
+      <ol>
+        <li>The HTML is generally parsed first, in the order in which it appears on the page.</li>
+        <li>Whenever CSS is encountered, it is parsed to understand the styles that need to be applied to the page.
+          During this time, linked assets such as images and web fonts start to be fetched.</li>
+        <li>Whenever JavaScript is encountered, the browser parses, evaluates, and runs it against the page.</li>
+        <li>Slightly later on, the browser works out how each HTML element should be styled, given the CSS applied to
+          it.</li>
+        <li>The styled result is then painted to the screen.</li>
+      </ol>
+      <p class="notebox">
+        <strong>Note</strong>: This is a very simplified account of what happens, but it does give you an idea.
+      </p>
+      <p>The key step here is Step 3. By default, JavaScript parsing and execution are render-blocking. This means that
+        the browser blocks the parsing of any HTML that appears after the JavaScript is encountered, until the script
+        has been handled. As a result, styling and painting are blocked too. This means that you need to think carefully
+        not only about what you are downloading, but also about when and how that code is being executed.<br /><br />
+        The next few sections provide useful techniques for optimizing the parsing and execution of your JavaScript.</p>
+      <h1>Loading critical assets as soon as possible</h1>
+      <p>If a script is really important and you are concerned that it is affecting performance by not being loaded
+        quickly enough, you can load it inside the <a
+          href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head">&lthead&gt</a> of the document:</p>
+      <code>
+        &lthead&gt<br/>
+        ...<br/>
+        &ltscript src="main.js"&gt&lt/script&gt
+        <br/>...<br/>
+        &lt/head&gt
+      </code>
+      <p>This works OK, but is render-blocking. A better strategy is to use rel="preload" to create a preloader for
+        critical JavaScript:</p>
+      <code>&lthead&gt<br/>
+        ...<br/>
+        &lt!-- Preload a JavaScript file --&gt<br/>
+        &ltlink rel="preload" href="important-js.js" as="script" /&gt<br/>
+        &lt!-- Preload a JavaScript module --&gt<br/>
+        &ltlink rel="modulepreload" href="important-module.js" /&gt<br/>
+        ...<br/>
+        &lt/head&gt
+      </code>
+      <p>The preload <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link">&ltlink&gt</a> fetches the
+        JavaScript as soon as possible, without blocking rendering. You can then use it wherever you want in your page:
+      </p>
+      <code>&lt!-- Include this wherever makes sense --&gt<br/>
+        &ltscript src="important-js.js"&gt&lt/script&gt</code>
+      <p>or inside your script, in the case of a JavaScript module:</p>
+      <code>import { function } from "important-module.js";</code>
+      <p class="notebox">Note: Preloading does not guarantee that the script will be loaded by the time you include it,
+        but it does mean that it will start being downloaded sooner. Render-blocking time will still be shortened, even
+        if it is not completely removed.</p>
+      <h1>Deferring execution of non-critical JavaScript</h1>
+      <p>On the other hand, you should aim to defer parsing and execution of non-critical JavaScript to later on, when
+        it is needed. Loading it all up-front blocks rendering unnecessarily.<br /><br />
+
+        First of all, you can add the <mark>async</mark> attribute to your <mark>&ltscript&gt</mark> elements:</p>
+      <code>&lthead&gt<br/>
+        …<br/>
+        &ltscript async src="main.js"&gt&lt/script&gt<br/>
+        ...<br/>
+        &lt/head&gt
+      </code>
+      <p>This causes the script to be fetched in parallel with the DOM parsing, so it will be ready at the same time and
+        won't block rendering.</p>
+      <p class="notebox">
+        <strong>Note</strong>: There is another attribute, <mark>defer</mark>, which causes the script to be executed
+        after the document has been parsed, but before firing the <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event"><mark>DOMContentLoaded</mark></a>
+        event. This has a similar effect to <mark>async</mark>.
+      <p>For the rest of the content in this section, you can visit <a
+          href="https://developer.mozilla.org/en-US/docs/Learn/Performance/JavaScript">MDN</a>.</p>
+      </p>
+    </section>
+
+    <section class="main-section" id="HTML_Performance_Optimization">
+      <header id="header-4">HTML Performance Optimization</header>
+      <p>
+        HTML is by default fast and accessible. It is our job, as developers, to ensure that we preserve these two
+        properties when creating or editing HTML code. Complications can occur when, for example, the file size of a
+        video embed is too large or when JavaScript parsing blocks the rendering of critical page elements. This article
+        walks you through the key HTML performance features that can drastically improve the quality of your web page.
+      </p>
+      <table>
+        <tr>
+          <th>Prerequisites</th>
+          <td>Basic computer literacy, <a
+              href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software">basic
+              software installed</a>, and basic knowledge of <a
+              href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web">client-side web
+              technologies</a>.</td>
+        </tr>
+        <tr>
+          <th>Objective</th>
+          <td>To learn about the impact of HTML on website performance and how to optimize your HTML to improve
+            performance.</td>
+        </tr>
+      </table>
+      <h1>To optimize or not to optimize</h1>
+      <p>The first question you should answer before starting to optimize your HTML is "what do I need to optimize?".
+        Some of the tips and techniques discussed below are good practices that will benefit just about any web project,
+        whereas some are only needed in certain situations. Trying to apply all these techniques everywhere is probably
+        unnecessary, and may be a waste of your time. You should figure out what performance optimizations are actually
+        needed in each project.<br /><br />
+
+        To do this, you need to <a
+          href="https://developer.mozilla.org/en-US/docs/Learn/Performance/Measuring_performance">measure the
+          performance</a> of your site. As this link shows, there are several different ways to measure performance,
+        some involving sophisticated <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Performance_API">performance APIs</a>. The best way to
+        get started, however, is to learn how to use tools such as built-in browser <a
+          href="https://developer.mozilla.org/en-US/docs/Learn/Performance/Measuring_performance#network_monitor_tools">network</a>
+        and <a
+          href="https://developer.mozilla.org/en-US/docs/Learn/Performance/Measuring_performance#performance_monitor_tools">performance</a>
+        tools, to examine the parts of the page that are taking a long time to load and need optimizing.</p>
+      <h1>Key HTML performance issues</h1>
+      <p>HTML is simple in terms of performance — it is mostly text, which is small in size, and therefore, mostly quick
+        to download and render. The key issues that can impact the performance of a web page include:</p>
+      <ul>
+        <li>Size of the image and video files: It is important to consider how to handle the content of replaced
+          elements such as &ltimg&gt and &ltvideo&gt. Image and video files are large and can add significantly to the
+          weight of the page. Therefore, it is important to minimize the amount of bytes that get downloaded on a user's
+          device (for example, serve smaller images for mobile). You also need to consider improving the perceived
+          performance by loading images and videos on a page only when they are needed.</li>
+        <li>Delivery of embedded content: This is usually the content embedded in &ltiframe&gt elements. Loading content
+          into &ltiframe&gts can impact performance significantly, so it should be considered carefully.</li>
+        <li>Order of resource loading: To maximize the perceived and actual performance, the HTML should be loaded
+          first, in the order in which it appears on the page. You can then use various features to influence the order
+          of resource loading for better performance. For example, you can preload critical CSS and fonts early, but
+          defer non-critical JavaScript until later on.</li>
+      </ul>
+      <p class="notebox">Note: There is an argument to be made for simplifying your HTML structure and <a
+          href="https://en.wikipedia.org/wiki/Minification_(programming)">minifying</a> your source code, so that
+        rendering and downloads are faster. However, HTML file size is negligible compared to images and videos, and
+        browser rendering is very fast these days. If your HTML source is so large and complex that it is creating
+        rendering and download performance hits, you probably have bigger problems, and should aim to simplify it and
+        split the content up.</p>
+      <h1>Responsive handling of replaced elements</h1>
+      <p>Responsive design has revolutionized the way that web content layout is handled across different devices. One
+        key advantage that it enables is dynamic switching of layouts optimized for different screen sizes, for example
+        a wide screen layout versus a narrow (mobile) screen layout. It can also handle dynamic switching of content
+        based on other device attributes, such as resolution or preference for light or dark color scheme.<br /><br />
+
+        The so-called "mobile first" technique can ensure that the default layout is for small-screen devices, so
+        mobiles can just download images suitable for their screens, and don't need to take the performance hit of
+        downloading larger desktop images. However, since this is controlled using media queries in your CSS, it can
+        only positively affect performance of images loaded in CSS.<br /><br />
+
+        In the sections below, we'll summarize how to implement responsive replaced elements. You can find a lot more
+        detail about these implementations in the Video and audio content and Responsive images guides.</p>
+      <h1>Providing different image resolutions via srcset</h1>
+      <p>To provide different resolution versions of the same image depending on the device's resolution and viewport
+        size, you can use the srcset and sizes attributes.<br /><br />
+
+        This example provides different size images for different screen widths:</p>
+      <code>&ltimg<br/>
+        &emsp;srcset="480w.jpg 480w, 800w.jpg 800w"<br/>
+        &emsp;sizes="(max-width: 600px) 480px,<br/>
+              &emsp;&emsp;800px"<br/>
+        &emsp;src="800w.jpg"<br/>
+        &emsp;alt="Family portrait" /&gt
+      </code>
+      <p><mark>srcset</mark> provides the intrinsic size of the source images along with their filenames, and
+        <mark>sizes</mark> provides media queries alongside image slot widths that need to be filled in each case. The
+        browser then decides which images makes sense to load for each slot. As an example, if the screen width is
+        <mark>600px</mark> or less, then <mark>max-width: 600px</mark> is true, and therefore, the slot to fill is said
+        to be <mark>480px</mark>. In this case, the browser will likely choose to load the 480w.jpg file (480px-wide
+        image). This helps with performance because browsers don't load larger images than they need.<br /><br />
+
+        This example provides different resolution images for different screen resolutions:</p>
+      <code>&ltimg<br/>
+        &emsp;srcset="320w.jpg, 480w.jpg 1.5x, 640w.jpg 2x"<br/>
+        &emsp;src="640w.jpg"<br/>
+        &emsp;alt="Family portrait" /&gt
+      </code>
+      <p><mark>1.5x</mark>, <mark>2x</mark>, etc. are relative resolution indicators. If the image is styled to be
+        320px-wide (for example with <mark>width: 320px</mark> in CSS), the browser will load <mark>320w.jpg</mark> if
+        the device is low resolution (one device pixel per CSS pixel), or <mark>640x.jpg</mark> if the device is high
+        resolution (two device pixels per CSS pixel or more).<br /><br />
+
+        In both cases, the <mark>src</mark> attribute provides a default image to load if the browser does not support
+        <mark>src</mark>/<mark>srcset</mark>.</p>
+      <p>For the rest of the content in this section, you can visit <a
+          href="https://developer.mozilla.org/en-US/docs/Learn/Performance/HTML">MDN</a>.</p>
+    </section>
+
+    <section class="main-section" id="CSS_Performance_Optimization">
+      <header id="header-5">CSS Performance Optimization
+      </header>
+      <p>
+        When developing a website, you need to consider how the browser is handling the CSS on your site. To mitigate
+        any performance issues that CSS might be causing, you should optimize it. For example, you should optimize the
+        CSS to mitigate render-blocking and minimize the number of required reflows. This article walks you through key
+        CSS performance optimization techniques.
+      </p>
+      <table>
+        <tr>
+          <th>Prerequisites</th>
+          <td>Basic computer literacy, <a
+              href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software">basic
+              software installed</a>, and basic knowledge of <a
+              href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web">client-side web
+              technologies</a>.</td>
+        </tr>
+        <tr>
+          <th>Objective</th>
+          <td>To learn about the impact of CSS on website performance and how to optimize your CSS to improve
+            performance.</td>
+        </tr>
+      </table>
+      <h1>To optimize or not to optimize</h1>
+      <p>The first question you should answer before starting to optimize your CSS is "what do I need to optimize?".
+        Some of the tips and techniques discussed below are good practices that will benefit just about any web project,
+        whereas some are only needed in certain situations. Trying to apply all these techniques everywhere is probably
+        unnecessary, and may be a waste of your time. You should figure out what performance optimizations are actually
+        needed in each project.<br /><br />
+
+        To do this, you need to measure the performance of your site. As the previous link shows, there are several
+        different ways to measure performance, some involving sophisticated performance APIs. The best way to get
+        started however, is to learn how to use tools such as built-in browser network and performance tools, to see
+        what parts of the page load are taking a long time and need optimizing.</p>
+      <h1>Optimizing rendering</h1>
+      <p>Browsers follow a specific rendering path — paint only occurs after layout, which occurs after the render tree
+        is created, which in turn requires both the DOM and the CSSOM trees.<br /><br />
+
+        Showing users an unstyled page and then repainting it after the CSS styles have been parsed would be a bad user
+        experience. For this reason, CSS is render blocking until the browser determines that the CSS is required. The
+        browser can paint the page after it has downloaded the CSS and built the CSS object model (CSSOM).<br /><br />
+
+        To optimize the CSSOM construction and improve page performance, you can do one or more of the following based
+        on the current state of your CSS:</p>
+      <ul>
+        <li><strong>Remove unnecessary styles</strong>: This may sound obvious, but it is surprising how many developers
+          forget to clean up unused CSS rules that were added to their stylesheets during development and ended up not
+          being used. All styles get parsed, whether they are being used during layout and painting or not, so it can
+          speed up page rendering to get rid of unused ones. As How Do You Remove Unused CSS From a Site?
+          (csstricks.com, 2019) summarizes, this is a difficult problem to solve for a large codebase, and there isn't a
+          magic bullet to reliably find and remove unused CSS. You need to do the hard work of keeping your CSS modular
+          and being careful and deliberate about what is added and removed.</li>
+        <li><strong>Split CSS into separate modules</strong>: Keeping CSS modular means that CSS not required at page
+          load can be loaded later on, reducing initial CSS render-blocking and loading times. The simplest way to do
+          this is by splitting up your CSS into separate files and loading only what is needed:
+          <code>
+            &lt!-- Loading and parsing styles.css is render-blocking --&gt<br/>
+            &ltlink rel="stylesheet" href="styles.css" /&gt<br/><br/>
+
+            &lt!-- Loading and parsing print.css is not render-blocking --&gt<br/>
+            &ltlink rel="stylesheet" href="print.css" media="print" /&gt<br/><br/>
+
+            &lt!-- Loading and parsing mobile.css is not render-blocking on large screens --&gt<br/>
+            &ltlink<br/>
+              rel="stylesheet"<br/>
+              href="mobile.css"<br/>
+              media="screen and (max-width: 480px)" /&gt
+          </code>
+          <p>The above example provides three sets of styles — default styles that will always load, styles that will
+            only be loaded when the document is being printed, and styles that will be loaded only by devices with
+            narrow screens. By default, the browser assumes that each specified style sheet is render-blocking. You can
+            tell the browser when a style sheet should be applied by adding a media attribute containing a media query.
+            When the browser sees a style sheet that it only needs to apply in a specific scenario, it still downloads
+            the stylesheet, but doesn't render-block. By separating the CSS into multiple files, the main
+            render-blocking file, in this case styles.css, is much smaller, reducing the time for which rendering is
+            blocked.</p>
+        </li>
+        <li><strong>Minify and compress your CSS</strong>: Minifying involves removing all the whitespace in the file
+          that is only there for human readability, once the code is put into production. You can reduce loading times
+          considerably by minifying your CSS. Minification is generally done as part of a build process (for example,
+          most JavaScript frameworks will minify code when you build a project ready for deployment). In addition to
+          minification, make sure that the server that your site is hosted on uses compression such as gzip on files
+          before serving them.</li>
+        <li><strong>Simplify selectors</strong>: People often write selectors that are more complex than needed for
+          applying the required styles. This not only increases file sizes, but also the parsing time for those
+          selectors. For example:
+          <code>/* Very specific selector */<br/>
+            body div#main-content article.post h2.headline {<br/>
+              &emsp;font-size: 24px;<br/>
+            }<br/><br/>
+
+            /* You probably only need this */<br/>
+            .headline {<br/>
+              &emsp;font-size: 24px;<br/>
+            }
+          </code>
+          <p>Making your selectors less complex and specific is also good for maintenance. It is easy to understand what
+            simple selectors are doing, and it is easy to override styles when needed later on if the selectors are less
+            specific.</p>
+        </li>
+        <li><strong>Don't apply styles to more elements than needed</strong>: A common mistake is to apply styles to all
+          elements using the universal selector, or at least, to more elements than needed. This kind of styling can
+          impact performance negatively, especially on larger sites.
+          <code>/* Selects every element inside the &ltbody&gt */<br/>
+            body * {<br/>
+              &emsp;font-size: 14px;<br/>
+              &emsp;display: flex;<br/>
+            }
+          </code>
+          <p>Remember that many properties (such as font-size) inherit their values from their parents, so you don't
+            need to apply them everywhere. And powerful tools such as Flexbox need to be used sparingly. Using them
+            everywhere can cause all kinds of unexpected behavior.</p>
+        </li>
+        <li><strong>Cut down on image HTTP requests with CSS sprites</strong>: CSS sprites is a technique that places
+          several small images (such as icons) that you want to use on your site into a single image file, and then uses
+          different background-position values to display the chunk of image that you want to show in each different
+          place. This can dramatically cut down on the number of HTTP requests needed to fetch the images.</li>
+        <li><strong>Preload important assets</strong>: You can use rel="preload" to turn
+          <link> elements into preloaders for critical assets. This includes CSS files, fonts, and images:
+          <code>&ltlink rel="preload" href="style.css" as="style" /&gt<br/><br/>
+            &ltlink<br/>
+            &emsp;rel="preload"<br/>
+            &emsp;href="ComicSans.woff2"<br/>
+            &emsp;as="font"<br/>
+            &emsp;type="font/woff2"<br/>
+            &emsp;crossorigin /&gt<br/><br/>
+
+            &ltlink<br/>
+            &emsp;rel="preload"<br/>
+            &emsp;href="bg-image-wide.png"<br/>
+            &emsp;as="image"<br/>
+            &emsp;media="(min-width: 601px)" /&gt<br/>
+          </code>
+          <p>With preload, the browser will fetch the referenced resources as soon as possible and make them available
+            in the browser cache so that they will be ready for use sooner when they are referenced in subsequent code.
+            It is useful to preload high-priority resources that the user will encounter early on in a page so that the
+            experience is as smooth as possible. Note how you can also use media attributes to create responsive
+            preloaders. See also Preload critical assets to improve loading speed on web.dev (2020)</p>
+        </li>
+      </ul>
+      <p>For the rest of the content in this section, you can visit <a
+          href="https://developer.mozilla.org/en-US/docs/Learn/Performance/CSS">MDN</a>.</p>
+    </section>
+
+    <section class="main-section" id="References">
+      <header id="header-6">References
+      </header>
+      <p>
+        All the documentation in this page is taken from <a
+          href="https://developer.mozilla.org/en-US/docs/Learn/Performance">MDN</a>.
+      </p>
+    </section>
+
+  </main>
+</body>
+
+</html>
